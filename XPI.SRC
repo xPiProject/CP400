@@ -1,0 +1,70 @@
+'------------------------------------------------------------------------
+'xPi V2000 for Calculator
+'fx-CP400 Version
+
+'Copyleft (c) 2014
+
+'This program is free software: you can redistribute it and/or modify
+'it under the terms of the GNU General Public License as published by
+'the Free Software Foundation, either version 3 of the License, or
+'(at your option) any later version.
+
+'This program is distributed in the hope that it will be useful,
+'but WITHOUT ANY WARRANTY; without even the implied warranty of
+'MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+'GNU General Public License for more details.
+
+'You should have received a copy of the GNU General Public License
+'along with this program.  If not, see <http://www.gnu.org/licenses/>.
+'------------------------------------------------------------------------
+
+local a,b,c,d,e,f,g
+local i
+
+10000->a
+x/4*14->c
+0->e
+{}->f
+0->i
+
+ClrText
+Print "xPi v2000 for calculator fx-CP400 version"
+Print "Calculation in progress..."
+
+if x<4 or mod(x,4)¡Ù0: then
+  Print "Incorrect argument"
+  Stop
+ifend
+
+for 1->i to c+1
+  2000->f[i]
+next
+
+Print "3.141"
+
+0->i
+while c¡Ù0
+  0->d
+  c*2->g
+  c->b
+  while true
+    int(d+f[b]*a)->d
+    g-1->g
+    mod(d,g)->f[b]
+    int(d/g)->d
+    g-1->g
+    b-1->b
+    if b=0: then
+      break
+    ifend
+    d*b->d
+  whileend
+  c-14->c
+
+  if i>0: then
+    print int(e+d/a)
+  ifend
+  i+1->i
+
+  mod(d,a)->e
+whileend
